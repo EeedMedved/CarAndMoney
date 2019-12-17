@@ -13,6 +13,9 @@ class Refill(models.Model):
     def sum(self):
         return self.liters * self.price
 
+    def __str__(self):
+        return self.gas_station.name + ' ' + str(self.refillDate)
+
 
 class GasStation(models.Model):
     name = models.CharField(max_length=50)
@@ -20,3 +23,6 @@ class GasStation(models.Model):
 
     class Meta:
         unique_together = ['name', 'location']
+
+    def __str__(self):
+        return self.name + ', ' + self.location
